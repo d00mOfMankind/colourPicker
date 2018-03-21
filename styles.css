@@ -9,9 +9,32 @@ table{
 }
 
 #board{
-	width: 70%;
+	width: 80%;
 	height: 100%;
 	margin: auto;
+	float: right;
+}
+
+#scoreSide{
+	width: 20%;
+	height: 40%;
+	margin: auto;
+	float: left;
+}
+
+#score{
+	width: 80%;
+	margin: auto;
+	float: center;
+	color: red;
+	font-size: 180;
+}
+
+#instructions{
+	width: 80%;
+	margin: auto;
+	float: center;
+	font-size: 80;
 }
 
 .box{

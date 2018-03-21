@@ -11,21 +11,48 @@ https://gamejolt.com/games/color-picker/35110
 </head>
 <body>
 	<script type="text/javascript">
-		document.addEventListener("DOMContentLoaded", function() {run();});
+		document.addEventListener("DOMContentLoaded", function() {choice("foo");});
+
+		var goal;
+		var score = 0;
+		var variable = 10;
 
 		function run(){
-			var variable = 10
-
-			colour(variable);
+			var base = colour();
+			goal = colourGoal(base, variable);
 
 		}
 
-		function end(){
-			alert("Noooooo");
+		function choice(name){
+			if (name == goal){ //if correct
+				score++;
+
+				if (score == 5){
+					variable = 15;
+				}else if (score == 10){
+					variable = 10;
+				}else if (score == 15){
+					variable = 6;
+				}else if (score == 20){
+					variable = 4;
+				}else if (score == 25){
+					variable = 3;
+				}
+
+
+				run();
+			}else{ //if false
+				score = 0;
+				variable = 20;
+				run();
+			}
+
+			//console.log(score);
+			document.getElementById("score").innerHTML = score;
 		}
 
 
-		function colour(variable){
+		function colour(){
 			var base = [];
 			//16777215 = ffffff
 			base[0] = Math.floor((Math.random() * 360) + 1);
@@ -33,7 +60,6 @@ https://gamejolt.com/games/color-picker/35110
 			base[2] = 50;
 
 			var colour = "hsl(" + base[0] + "," + base[1] + "%," + base[2] + "%)";
-			console.log("Base HSL random number: " + colour);
 
 
 			console.log("Base colour: " + colour);
@@ -42,7 +68,9 @@ https://gamejolt.com/games/color-picker/35110
 				document.getElementById(boxes[i]).style.backgroundColor = colour;
 			}
 
-			colourGoal(base, variable);
+			return base;
+
+
 		}
 
 		function colourGoal(base, variable){
@@ -55,52 +83,61 @@ https://gamejolt.com/games/color-picker/35110
 
 
 			console.log("Goal colour: " + colour);
+			console.log("Difference: " + variable);
 			var targetBox = "box" + Math.floor((Math.random() * 9));
 
-			console.log(targetBox);
+			//console.log(targetBox);
 
 			document.getElementById(targetBox).style.backgroundColor = colour;
 
-
+			return targetBox;
 
 		}
 	</script>
-	<div id="board">
+	<span id="scoreSide">
+		<div id="score">
+			
+		</div>
+		<div id="instructions">
+			Click the odd one out.
+		</div>
+	</span>
+	<span id="board">
 		<table id="table">
 			<tr>
 				<td>
-					<div class="box", id="box0"></div>
+					<div class="box", id="box0", onclick="choice('box0')"></div>
 				</td>
 				<td>
-					<div class="box", id="box1"></div>
+					<div class="box", id="box1", onclick="choice('box1')"></div>
 				</td>
 				<td>
-					<div class="box", id="box2"></div>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<div class="box", id="box3"></div>
-				</td>
-				<td>
-					<div class="box", id="box4"></div>
-				</td>
-				<td>
-					<div class="box", id="box5"></div>
+					<div class="box", id="box2", onclick="choice('box2')"></div>
 				</td>
 			</tr>
 			<tr>
 				<td>
-					<div class="box", id="box6"></div>
+					<div class="box", id="box3", onclick="choice('box3')"></div>
 				</td>
 				<td>
-					<div class="box", id="box7"></div>
+					<div class="box", id="box4", onclick="choice('box4')"></div>
 				</td>
 				<td>
-					<div class="box", id="box8"></div>
+					<div class="box", id="box5", onclick="choice('box5')"></div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div class="box", id="box6", onclick="choice('box6')"></div>
+				</td>
+				<td>
+					<div class="box", id="box7", onclick="choice('box7')"></div>
+				</td>
+				<td>
+					<div class="box", id="box8", onclick="choice('box8')"></div>
 				</td>
 			</tr>
 		</table>
-	</div>
+	</span>
 </body>
 </html>
