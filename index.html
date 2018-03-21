@@ -1,0 +1,73 @@
+<html>
+<!--
+This is not my idea,
+this is where I got the idea from
+https://gamejolt.com/games/color-picker/35110
+-->
+<head>
+	<title>Colour picker</title>
+	<link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+	<script type="text/javascript">
+		document.addEventListener("DOMContentLoaded", function() {run();});
+
+		function run(){
+			colour();
+
+		}
+
+		function end(){
+			alert("Noooooo");
+		}
+
+
+
+
+		function colour(){
+			var boxes = ["box0", "box1", "box2", "box3", "box4", "box5", "box6", "box7", "box8"]
+			for (var i=0; i<9; i++){
+				document.getElementById(boxes[i]).style.backgroundColor = "blue";
+			}
+		}
+	</script>
+	<div id="board">
+		<table id="table">
+			<tr>
+				<td>
+					<div class="box", id="box0"></div>
+				</td>
+				<td>
+					<div class="box", id="box1"></div>
+				</td>
+				<td>
+					<div class="box", id="box2"></div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div class="box", id="box3"></div>
+				</td>
+				<td>
+					<div class="box", id="box4"></div>
+				</td>
+				<td>
+					<div class="box", id="box5"></div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div class="box", id="box6"></div>
+				</td>
+				<td>
+					<div class="box", id="box7"></div>
+				</td>
+				<td>
+					<div class="box", id="box8"></div>
+				</td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>
