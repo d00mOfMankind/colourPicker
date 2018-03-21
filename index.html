@@ -14,7 +14,9 @@ https://gamejolt.com/games/color-picker/35110
 		document.addEventListener("DOMContentLoaded", function() {run();});
 
 		function run(){
-			colour();
+			var variable = 10
+
+			colour(variable);
 
 		}
 
@@ -23,13 +25,44 @@ https://gamejolt.com/games/color-picker/35110
 		}
 
 
+		function colour(variable){
+			var base = [];
+			//16777215 = ffffff
+			base[0] = Math.floor((Math.random() * 360) + 1);
+			base[1] = Math.floor((Math.random() * 70) + 30);
+			base[2] = 50;
+
+			var colour = "hsl(" + base[0] + "," + base[1] + "%," + base[2] + "%)";
+			console.log("Base HSL random number: " + colour);
 
 
-		function colour(){
-			var boxes = ["box0", "box1", "box2", "box3", "box4", "box5", "box6", "box7", "box8"]
-			for (var i=0; i<9; i++){
-				document.getElementById(boxes[i]).style.backgroundColor = "blue";
+			console.log("Base colour: " + colour);
+			var boxes = ["box0", "box1", "box2", "box3", "box4", "box5", "box6", "box7", "box8"]; //do this dynamically later on?
+			for (var i=0; i<boxes.length; i++){
+				document.getElementById(boxes[i]).style.backgroundColor = colour;
 			}
+
+			colourGoal(base, variable);
+		}
+
+		function colourGoal(base, variable){
+			if (base[1] + variable > 100){ //if going up will go over limit
+				base[1] = base[1] - variable;
+			}else{
+				base[1] = base[1] + variable;
+			}
+			var colour = "hsl(" + base[0] + "," + base[1] + "%," + base[2] + "%)";
+
+
+			console.log("Goal colour: " + colour);
+			var targetBox = "box" + Math.floor((Math.random() * 9));
+
+			console.log(targetBox);
+
+			document.getElementById(targetBox).style.backgroundColor = colour;
+
+
+
 		}
 	</script>
 	<div id="board">
