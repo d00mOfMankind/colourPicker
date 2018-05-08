@@ -1,3 +1,3 @@
 # colourPicker
 
-https://d00mofmankind.github.io/colourPicker/
+https://domroutley.github.io/colourPicker/
